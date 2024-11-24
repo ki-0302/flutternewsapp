@@ -6,6 +6,12 @@ News App.
 
 ## ライブラリインストール
 
+### ファイル自動生成
+
+```
+dart pub add dev:build_runner
+```
+
 ### HTTPクライアント
 
 ```
