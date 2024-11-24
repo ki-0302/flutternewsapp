@@ -4,8 +4,12 @@ News App.
 
 ## Getting Started
 
-### ライブラリインストール
+## ライブラリインストール
+
+### HTTPクライアント
 
 ```
 flutter pub add dio
+flutter pub add retrofit
 ```
+
