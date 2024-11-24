@@ -38,6 +38,7 @@ dependencies:
   dio: ^5.7.0
   retrofit: ^4.4.1
   logger: ^2.5.0
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:
