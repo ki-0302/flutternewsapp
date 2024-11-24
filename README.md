@@ -17,6 +17,7 @@ flutter pub add retrofit
 
 ```
 flutter pub add json_annotation
+dart pub add dev:json_serializable
 ```
 
 ### ログ
