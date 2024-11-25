@@ -34,6 +34,13 @@ dart pub add dev:json_serializable
 flutter pub add logger
 ```
 
+### immutableクラス生成
+
+```
+dart pub add freezed
+flutter pub add freezed_annotation
+```
+
 ### flutterバージョン管理
 
 ```
