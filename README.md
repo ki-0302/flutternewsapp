@@ -6,6 +6,8 @@ News App.
 
 ## ライブラリインストール
 
+### dartバージョン
+
 ### ファイル自動生成
 
 ```
@@ -32,7 +34,16 @@ dart pub add dev:json_serializable
 flutter pub add logger
 ```
 
-### java
+### flutterバージョン管理
+
+```
+brew tap leoafarias/fvm
+brew install fvm
+fvm relases
+fvm use 3.24.5
+```
+
+### javaバージョン管理
 
 ```
 brew install jenv
