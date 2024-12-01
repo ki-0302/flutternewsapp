@@ -141,3 +141,7 @@ app.*.symbols
 
 # FVM Version Cache
 .fvm/
+
+# env
+*.env
+*env.g.dart
