@@ -41,6 +41,13 @@ dart pub add freezed
 flutter pub add freezed_annotation
 ```
 
+### 環境変数
+
+```
+flutter pub add envied
+flutter pub add --dev envied_generator
+```
+
 ### flutterバージョン管理
 
 ```

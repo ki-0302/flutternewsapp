@@ -41,6 +41,7 @@ dependencies:
   json_annotation: ^4.9.0
   freezed: ^2.5.7
   freezed_annotation: ^2.4.4
+  envied: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,7 @@ dev_dependencies:
   flutter_lints: ^4.0.0
   json_serializable: ^6.9.0
   build_runner: ^2.4.13
+  envied_generator: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
