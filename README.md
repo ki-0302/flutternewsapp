@@ -46,6 +46,9 @@ flutter pub add freezed_annotation
 ```
 flutter pub add envied
 flutter pub add --dev envied_generator
+
+# .envとlib/env/env.dartを追加した後に実行
+dart run build_runner build
 ```
 
 ### flutterバージョン管理
