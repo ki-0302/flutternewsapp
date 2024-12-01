@@ -19,6 +19,10 @@ dart pub add dev:build_runner
 ```
 flutter pub add dio
 flutter pub add retrofit
+dart pub add retrofit_generator
+
+# Retrofit用のクラスを更新したら自動生成を実行
+dart run build_runner build
 ```
 
 ### jsonシリアライズ
