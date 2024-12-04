@@ -45,6 +45,12 @@ dart pub add freezed
 flutter pub add freezed_annotation
 ```
 
+### DateFormat
+
+```
+flutter pub get
+```
+
 ### 環境変数
 
 ```
