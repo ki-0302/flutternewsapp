@@ -26,12 +26,12 @@ class _NewsApiClient implements NewsApiClient {
   @override
   Future<TopHeadlines> getTopHeadlines({
     required String country,
-    required double lon,
+    String apiKey = Env.NEWS_API_KEY,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'country': country,
-      r'apiKey': lon,
+      r'apiKey': apiKey,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
