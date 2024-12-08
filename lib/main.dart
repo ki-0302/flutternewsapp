@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'data/model/top_headlines.dart';
+import 'constants_text_style.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter News App'),
     );
   }
 }
@@ -70,56 +73,116 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    List<Article> artilces = [
+      Article(
+        source: Source(id: "id", name: "source"),
+        author: "author",
+        title: "title",
+        description: "description",
+        url: "url",
+        urlToImage:
+            "https://cdn.myportfolio.com/0daad40c-45e4-42be-8f1e-cee5198d5269/e5b14357-18b5-4d71-b751-8168f349b3e5_rw_1920.jpg?h=868a6b3743f2e0dfc52e01eac2cf353f",
+        publishedAt: DateTime.now(),
+        content: "content",
+      ),
+      Article(
+        source: Source(id: "id", name: "source2"),
+        author: "author",
+        title: "title2",
+        description: "description",
+        url: "url",
+        urlToImage:
+            "https://cdn.myportfolio.com/0daad40c-45e4-42be-8f1e-cee5198d5269/109c85d9-d0eb-4bdb-b202-3e8255002a73_rw_1920.jpg?h=a9ddefcfff2cbf0ed03091d3f64e3bc4",
+        publishedAt: DateTime.now(),
+        content: "content",
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
+      body: _buildListView(artilces),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget _buildListView(List<Article> articles) {
+    return ListView.builder(
+      padding: const EdgeInsets.only(left: 0, top: 8, right: 0, bottom: 8),
+      itemCount: articles.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: _newsItem(articles[index]),
+        );
+      },
+    );
+  }
+
+  Widget _newsItem(Article article) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  article.source.name,
+                  style: ConstantsTextStyle.source,
+                ),
+                Text(
+                  article.title,
+                  style: ConstantsTextStyle.title,
+                ),
+                _publishedAt(article.publishedAt),
+              ],
+            ),
+          ),
+        ),
+        _newsImage(article.urlToImage),
+      ],
+    );
+  }
+
+  Widget _publishedAt(DateTime publishedAt) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Text(
+        DateFormat('yyyy/MM/dd HH:mm').format(publishedAt),
+        textAlign: TextAlign.right,
+        style: ConstantsTextStyle.publishedAt,
+      ),
+    );
+  }
+
+  Widget _newsImage(String url) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8.0),
+      child: Image.network(
+        url,
+        width: 120,
+        fit: BoxFit.cover,
+        loadingBuilder: (BuildContext context, Widget child,
+            ImageChunkEvent? loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Center(
+            child: CircularProgressIndicator(
+              value: loadingProgress.expectedTotalBytes != null
+                  ? loadingProgress.cumulativeBytesLoaded /
+                      loadingProgress.expectedTotalBytes!
+                  : null,
+            ),
+          );
+        },
+      ),
     );
   }
 }
