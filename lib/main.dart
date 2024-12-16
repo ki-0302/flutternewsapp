@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutternewsapp/usecase/get_top_headlines_use_case.dart';
 import 'package:intl/intl.dart';
 import 'data/model/top_headlines.dart';
 import 'constants_text_style.dart';
+import 'news_list_stateful_widget.dart';
+import '../data/repository/top_headlines_repository.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,25 +19,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        dividerTheme: const DividerThemeData(
+          color: Colors.grey,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter News App'),
+      home: NewsListStatefulWidget(
+        title: 'Flutter News App',
+        getTopHeadlinesUseCase: GetTopHeadlinesUseCase(
+          TopHeadlinesRepository(),
+        ),
+      ),
     );
   }
 }
@@ -136,11 +132,11 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Text(
                   article.source.name,
-                  style: ConstantsTextStyle.source,
+                  style: ConstantsTextStyle.listSource,
                 ),
                 Text(
                   article.title,
-                  style: ConstantsTextStyle.title,
+                  style: ConstantsTextStyle.listTitle,
                 ),
                 _publishedAt(article.publishedAt),
               ],
@@ -158,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Text(
         DateFormat('yyyy/MM/dd HH:mm').format(publishedAt),
         textAlign: TextAlign.right,
-        style: ConstantsTextStyle.publishedAt,
+        style: ConstantsTextStyle.listPublishedAt,
       ),
     );
   }
