@@ -45,6 +45,12 @@ dart pub add freezed
 flutter pub add freezed_annotation
 ```
 
+### path
+
+```
+flutter pub add path
+```
+
 ### DB
 
 ```
