@@ -45,6 +45,11 @@ dart pub add freezed
 flutter pub add freezed_annotation
 ```
 
+### DB
+
+```
+flutter pub add sqflite
+```
 ### DateFormat
 
 ```
