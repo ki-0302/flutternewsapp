@@ -38,7 +38,7 @@ class _ArticleState extends State<ArticleWidget> {
     setState(() {
       _isFavorite = !_isFavorite;
     });
-    DatabaseHelper().updateFavoriteState(widget.article.source.id, _isFavorite);
+    DatabaseHelper().updateFavoriteState(widget.article.url, _isFavorite);
   }
 
   @override
@@ -49,7 +49,7 @@ class _ArticleState extends State<ArticleWidget> {
         title: const Text(""),
       ),
       body: FutureBuilder<bool>(
-        future: DatabaseHelper().getFavoriteState(widget.article.source.id),
+        future: DatabaseHelper().getFavoriteState(widget.article.url),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             WidgetsBinding.instance.addPostFrameCallback((_) {

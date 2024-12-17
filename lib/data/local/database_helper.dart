@@ -30,34 +30,34 @@ class DatabaseHelper {
     );
   }
 
-  Future<void> updateFavoriteState(String id, bool isFavorite) async {
+  Future<void> updateFavoriteState(String url, bool isFavorite) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(
       favoriteState,
       where: 'id = ?',
-      whereArgs: [id],
+      whereArgs: [url],
     );
     if (maps.isNotEmpty) {
       await db.update(
         favoriteState,
         {'isFavorite': isFavorite ? 1 : 0},
         where: 'id = ?',
-        whereArgs: [id],
+        whereArgs: [url],
       );
     } else {
       await db.insert(
         favoriteState,
-        {'id': id, 'isFavorite': isFavorite ? 1 : 0},
+        {'id': url, 'isFavorite': isFavorite ? 1 : 0},
       );
     }
   }
 
-  Future<bool> getFavoriteState(String id) async {
+  Future<bool> getFavoriteState(String url) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query(
       favoriteState,
       where: 'id = ?',
-      whereArgs: [id],
+      whereArgs: [url],
     );
     if (maps.isNotEmpty) {
       return maps.first['isFavorite'] == 1;
