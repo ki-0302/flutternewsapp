@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutternewsapp/usecase/get_top_headlines_use_case.dart';
 import 'package:intl/intl.dart';
 import 'data/local/database_helper.dart';
+import 'data/model/article.dart';
 import 'data/model/top_headlines.dart';
 import 'constants_text_style.dart';
 import 'news_list_stateful_widget.dart';

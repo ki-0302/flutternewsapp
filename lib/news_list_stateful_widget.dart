@@ -7,6 +7,7 @@ import 'package:flutternewsapp/usecase/get_top_headlines_use_case.dart';
 import 'package:intl/intl.dart';
 
 import 'constants_text_style.dart';
+import 'data/model/article.dart';
 import 'detail_screen.dart';
 import 'main.dart';
 

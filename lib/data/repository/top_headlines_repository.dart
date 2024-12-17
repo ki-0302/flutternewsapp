@@ -1,5 +1,8 @@
 import 'package:flutternewsapp/data/model/top_headlines.dart';
 
+import '../model/article.dart';
+import '../model/source.dart';
+
 class TopHeadlinesRepository {
   Future<TopHeadlines> getTopHeadlines() async {
     return TopHeadlines(status: "ok", totalResults: 1, articles: [
