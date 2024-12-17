@@ -6,7 +6,7 @@ import '../model/article.dart';
 import '../model/source.dart';
 
 class EverythingRepository {
-  Future<Everything> getTopHeadlines() async {
+  Future<Everything> getEverything(String query) async {
     return Everything(status: "ok", totalResults: 1, articles: [
       Article(
         source: Source(id: "id1", name: "source"),
