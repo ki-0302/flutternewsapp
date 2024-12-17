@@ -40,5 +40,9 @@ class ConstantsTextStyle {
     fontSize: 17,
   );
 
+  static TextStyle contents =  const TextStyle(
+    color: Colors.black,
+    fontSize: 17,
+  );
 
 }
