@@ -24,7 +24,7 @@ class EverythingRepository {
         author: "author",
         title: "title2",
         description: "description",
-        url: "url",
+        url: "url2",
         urlToImage:
         "https://cdn.myportfolio.com/0daad40c-45e4-42be-8f1e-cee5198d5269/109c85d9-d0eb-4bdb-b202-3e8255002a73_rw_1920.jpg?h=a9ddefcfff2cbf0ed03091d3f64e3bc4",
         publishedAt: DateTime.now(),
@@ -35,7 +35,7 @@ class EverythingRepository {
         author: "author",
         title: "title3",
         description: "description",
-        url: "url",
+        url: "url3",
         urlToImage:
         "https://cdn.myportfolio.com/0daad40c-45e4-42be-8f1e-cee5198d5269/109c85d9-d0eb-4bdb-b202-3e8255002a73_rw_1920.jpg?h=a9ddefcfff2cbf0ed03091d3f64e3bc4",
         publishedAt: DateTime.now(),

@@ -118,7 +118,7 @@ class NewsListState extends State<NewsListStatefulWidget> {
           child: Divider(
             height: 1,
             thickness: 1,
-            color: Colors.indigoAccent,
+            color: Colors.grey,
           ),
         ),
         Row(

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutternewsapp/constants_app.dart';
+import 'package:flutternewsapp/search_stateful_widget.dart';
 import 'package:flutternewsapp/usecase/get_top_headlines_use_case.dart';
+import 'package:flutternewsapp/usecase/search_everything_use_case.dart';
 import 'package:intl/intl.dart';
 import 'data/model/top_headlines.dart';
 import 'constants_text_style.dart';
+import 'data/repository/everything_repository.dart';
 import 'help_stateful_widget.dart';
 import 'news_list_stateful_widget.dart';
 import '../data/repository/top_headlines_repository.dart';
@@ -38,7 +41,11 @@ class MyAppState extends State<MyAppStatefulWidget> {
           TopHeadlinesRepository(),
         ),
       ),
-      const HelpStatefulWidget(),
+      SearchStatefulWidget(
+          searchEverythingUseCase: SearchEverythingUseCase(
+              EverythingRepository(),
+          ),
+      ),
       const HelpStatefulWidget(),
     ];
 
