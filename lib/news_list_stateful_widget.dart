@@ -64,66 +64,114 @@ class NewsListState extends State<NewsListStatefulWidget> {
       itemCount: articles.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: _newsItem(articles[index]),
-        );
+            title: index == 0
+                ? _newsLargeItem(articles[index])
+                : _newsSmallItem(articles[index]));
       },
     );
   }
 
-  Widget _newsItem(Article article) {
+  Widget _newsLargeItem(Article article) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DetailScreen(article: article,)),
+          MaterialPageRoute(
+              builder: (context) => DetailScreen(
+                    article: article,
+                  )),
         );
       },
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    article.source.name,
-                    style: ConstantsTextStyle.listSource,
-                  ),
-                  Text(
-                    article.title,
-                    style: ConstantsTextStyle.listTitle,
-                  ),
-                  _publishedAt(article.publishedAt),
-                ],
-              ),
-            ),
+          Text(
+            article.source.name,
+            style: ConstantsTextStyle.source,
           ),
-          _newsImage(article.urlToImage),
+          Text(
+            article.title,
+            style: ConstantsTextStyle.title,
+          ),
+          _publishedAt(article.publishedAt, ConstantsTextStyle.publishedAt),
+          Padding(
+            padding: const EdgeInsets.only(top: 8, bottom: 8),
+            child: _newsImage(article.urlToImage, double.infinity),
+          ),
         ],
       ),
     );
   }
 
-  Widget _publishedAt(DateTime publishedAt) {
+  Widget _newsSmallItem(Article article) {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => DetailScreen(
+                    article: article,
+                  )),
+        );
+      },
+      child: Column(children: [
+        const Padding(
+          padding: EdgeInsets.only(bottom: 16),
+          child: Divider(
+            height: 1,
+            thickness: 1,
+            color: Colors.indigoAccent,
+          ),
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      article.source.name,
+                      style: ConstantsTextStyle.listSource,
+                    ),
+                    Text(
+                      article.title,
+                      style: ConstantsTextStyle.listTitle,
+                    ),
+                    _publishedAt(article.publishedAt,
+                        ConstantsTextStyle.listPublishedAt),
+                  ],
+                ),
+              ),
+            ),
+            _newsImage(article.urlToImage, 120.0),
+          ],
+        ),
+      ]),
+    );
+  }
+
+  Widget _publishedAt(DateTime publishedAt, TextStyle style) {
     return Align(
       alignment: Alignment.centerRight,
       child: Text(
         DateFormat('yyyy/MM/dd HH:mm').format(publishedAt),
         textAlign: TextAlign.right,
-        style: ConstantsTextStyle.listPublishedAt,
+        style: style,
       ),
     );
   }
 
-  Widget _newsImage(String url) {
+  Widget _newsImage(String url, double width) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
       child: Image.network(
         url,
-        width: 120,
+        width: width,
         fit: BoxFit.cover,
         loadingBuilder: (BuildContext context, Widget child,
             ImageChunkEvent? loadingProgress) {
