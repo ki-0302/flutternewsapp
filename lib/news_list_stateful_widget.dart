@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutternewsapp/data/model/top_headlines.dart';
 import 'package:flutternewsapp/data/result/result.dart';
+import 'package:flutternewsapp/help_stateful_widget.dart';
 import 'package:flutternewsapp/usecase/get_top_headlines_use_case.dart';
 import 'package:intl/intl.dart';
 
@@ -38,13 +39,7 @@ class NewsListState extends State<NewsListStatefulWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: _buildStatus(),
-    );
+    return _buildStatus();
   }
 
   Widget _buildStatus() {
