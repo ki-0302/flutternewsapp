@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutternewsapp/usecase/get_top_headlines_use_case.dart';
 import 'package:intl/intl.dart';
+import 'data/local/database_helper.dart';
 import 'data/model/top_headlines.dart';
 import 'constants_text_style.dart';
 import 'news_list_stateful_widget.dart';
@@ -30,7 +31,14 @@ class ArticleWidget extends StatefulWidget {
 }
 
 class _ArticleState extends State<ArticleWidget> {
-  void _favorite() {}
+  bool _isFavorite = false;
+
+  void _favorite() {
+    setState(() {
+      _isFavorite = !_isFavorite;
+    });
+    DatabaseHelper().updateFavoriteState(widget.article.source.id, _isFavorite);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +47,25 @@ class _ArticleState extends State<ArticleWidget> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text(""),
       ),
-      body: _detailItem(),
+      body: FutureBuilder<bool>(
+        future: DatabaseHelper().getFavoriteState(widget.article.source.id),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              setState(() {
+                _isFavorite = snapshot.data!;
+              });
+            });
+          }
+          return _detailItem();
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _favorite,
+        backgroundColor: _isFavorite ? Colors.orange : Colors.grey,
         tooltip: 'favorite',
         child: const Icon(Icons.favorite),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 
