@@ -62,6 +62,12 @@ flutter pub add sqflite
 flutter pub get
 ```
 
+### packageInfo
+
+```
+flutter pub add package_info_plus
+```
+
 ### 環境変数
 
 ```
