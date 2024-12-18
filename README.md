@@ -6,7 +6,7 @@ newsapi.orgのAPI経由でニュース情報を取得しています。
 
 ## キャプチャ
 
-<img src="https://github.com/user-attachments/assets/71f6e3cf-fb61-432c-9b0d-97ac32fe373d" width="300" />
+<img src="https://github.com/user-attachments/assets/773f9307-6ce9-4144-9c53-05b85afa34b3" width="300" />
 
 <img src="https://github.com/user-attachments/assets/7845b064-5bcc-46ae-821e-b7066035b7e1" width="300" /> <img src="https://github.com/user-attachments/assets/b9ef6a65-0a72-4875-bc66-cda85cac10c0" width="300" />
 
