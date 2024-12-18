@@ -1,4 +1,4 @@
-# flutternewsapp
+# Flutter News App
 
 Flutterで作成したニュースのデモアプリです。
 
