@@ -2,7 +2,7 @@
 
 Flutterで作成したニュースのデモアプリです。
 newsapi.orgのAPI経由でニュース情報を取得しています。
-https://github.com/user-attachments/assets/410b65bc-c22d-4c52-9899-1e25a71425d9
+<img src="https://github.com/user-attachments/assets/410b65bc-c22d-4c52-9899-1e25a71425d9" width="300">
 
 ![ios04](https://github.com/user-attachments/assets/126ef62e-26e3-418d-9b53-4ccfc77cb33d)
 ![ios03](https://github.com/user-attachments/assets/e5925a77-b878-4596-b744-1fdb7929f2fb)
