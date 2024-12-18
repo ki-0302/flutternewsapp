@@ -48,6 +48,7 @@ class NewsListState extends State<NewsListStatefulWidget> {
       case Success(data: final data):
         return _buildListView(data.articles);
       case Error(exception: final exception):
+        print('$exception');
         return Text('Error: $exception');
       case Loading():
         return const Text('Loading...');
@@ -162,8 +163,8 @@ class NewsListState extends State<NewsListStatefulWidget> {
     );
   }
 
-  Widget _newsImage(String url, double width) {
-    return ClipRRect(
+  Widget _newsImage(String? url, double width) {
+    return url == null ? const SizedBox.shrink() : ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
       child: Image.network(
         url,

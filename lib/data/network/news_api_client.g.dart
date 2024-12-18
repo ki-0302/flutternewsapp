@@ -14,7 +14,7 @@ class _NewsApiClient implements NewsApiClient {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://newsapi.org/v2/';
+    baseUrl ??= 'https://newsapi.org/';
   }
 
   final Dio _dio;

@@ -7,7 +7,7 @@ import '../model/top_headlines.dart';
 
 part 'news_api_client.g.dart';
 
-@RestApi(baseUrl: 'https://newsapi.org/v2/')
+@RestApi(baseUrl: 'https://newsapi.org/')
 abstract class NewsApiClient {
   factory NewsApiClient(
     Dio dio, {

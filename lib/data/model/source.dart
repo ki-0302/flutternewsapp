@@ -1,5 +1,5 @@
 class Source {
-  String id;
+  String? id;
   String name;
 
   Source({

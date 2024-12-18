@@ -87,7 +87,7 @@ class _ArticleState extends State<ArticleWidget> {
           _publishedAt(widget.article.publishedAt),
           _newsImage(widget.article.urlToImage),
           Text(
-            widget.article.description,
+            widget.article.description.toString(),
             style: ConstantsTextStyle.body,
           ),
         ],
@@ -109,8 +109,8 @@ class _ArticleState extends State<ArticleWidget> {
     );
   }
 
-  Widget _newsImage(String url) {
-    return Padding(
+  Widget _newsImage(String? url) {
+    return url == null ? const SizedBox.shrink() : Padding(
       padding: const EdgeInsets.only(top: 8, bottom: 8),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
