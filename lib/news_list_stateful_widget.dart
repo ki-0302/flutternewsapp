@@ -48,10 +48,9 @@ class NewsListState extends State<NewsListStatefulWidget> {
       case Success(data: final data):
         return _buildListView(data.articles);
       case Error(exception: final exception):
-        print('$exception');
         return Text('Error: $exception');
       case Loading():
-        return const Text('Loading...');
+        return const Center(child: CircularProgressIndicator());
     }
   }
 
@@ -164,25 +163,27 @@ class NewsListState extends State<NewsListStatefulWidget> {
   }
 
   Widget _newsImage(String? url, double width) {
-    return url == null ? const SizedBox.shrink() : ClipRRect(
-      borderRadius: BorderRadius.circular(8.0),
-      child: Image.network(
-        url,
-        width: width,
-        fit: BoxFit.cover,
-        loadingBuilder: (BuildContext context, Widget child,
-            ImageChunkEvent? loadingProgress) {
-          if (loadingProgress == null) return child;
-          return Center(
-            child: CircularProgressIndicator(
-              value: loadingProgress.expectedTotalBytes != null
-                  ? loadingProgress.cumulativeBytesLoaded /
-                      loadingProgress.expectedTotalBytes!
-                  : null,
+    return url == null
+        ? const SizedBox.shrink()
+        : ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.network(
+              url,
+              width: width,
+              fit: BoxFit.cover,
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
             ),
           );
-        },
-      ),
-    );
   }
 }
