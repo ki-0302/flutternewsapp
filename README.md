@@ -2,7 +2,11 @@
 
 Flutterで作成したニュースのデモアプリです。
 
-newsapi.orgのAPI経由でニュース情報を取得しています。
+HTTPクライアントはdioとretrofitを利用し、Repositoryからnewsapi.orgのAPI経由でニュース情報を取得・検索をできるようにしています。
+
+お気に入り機能はsqliteを利用し内部DBにURLをキーに保存しています。
+
+Repository, UseCase, Viewの構成になっています。
 
 ## キャプチャ
 
@@ -24,7 +28,10 @@ newsapi.orgのAPI経由でニュース情報を取得しています。
 
 Android, iOS
 
+## 開発環境
 
+- AAndroid Studio Koala Feature Drop | 2024.1.2 Patch 1
+- Flutter 3.24.5
 
 
 ## ライブラリ
